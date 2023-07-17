@@ -2,6 +2,7 @@
 
 import { Container, Box, Stack, Heading, Text, Button } from "@chakra-ui/react"
 import { Animate } from "react-simple-animate";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -65,7 +66,7 @@ export default function Home() {
               end={{ opacity: 1, transform: "translateX(0px)" }}
             >
               <Button size="lg" colorScheme="green" mt="24px">
-                See Bookings Table
+                <Link href="/BookingsTable">See Bookings Table</Link>
               </Button>
             </Animate>
           </Stack>
