@@ -5,9 +5,14 @@ const Navbar: React.FC = () => {
   return (
     <Box as="nav" className={"sticky-navbar"} p={2} shadow='md' color="white">
       <Stack direction="row" alignItems="center" justifyContent="center" >
-        <BrandLogo alt="Brand Logo" width={80} height={40} />
+        <Link href='/'>
+          <BrandLogo alt="Brand Logo" width={80} height={40} />
+        </Link>
         <Spacer maxWidth="2xl" />
         <HStack>
+          <Link fontSize="16px" fontWeight="500" color="black" href='/'>
+            Home
+          </Link>
           <Link fontSize="16px" fontWeight="500" color="black" href='https://www.tryp.com/en/manage-booking'>
             Support
           </Link>
