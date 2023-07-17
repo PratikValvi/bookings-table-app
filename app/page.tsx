@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main>
       <Container maxWidth="container.xl" padding="10px 10px 0px 10px" flexDirection="column" justifyContent="center" alignItems="center">
-        <Heading>Hello Next.js</Heading>
+        <Heading>Welcome to Bookings Table App</Heading>
       </Container>
     </main>
   )
