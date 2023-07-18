@@ -10,3 +10,8 @@ body {
   z-index: 100;
   background: white;
 }
+
+/** DataTable */
+.table-header:hover svg {
+  opacity: 1;
+}
