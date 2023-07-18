@@ -12,12 +12,14 @@ type DataTableProps = {
   pagination?: boolean;
 };
 
-const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption }) => {
+const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption, pagination }) => {
   const [tableRows, setTableRows] = useState<(string | JSX.Element)[][]>(rows);
   const [sortConfig, setSortConfig] = useState<{ key: number | null; direction: string | null }>({
     key: null,
     direction: null
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
 
   const handleSort = (columnIndex: number) => {
     const newSortConfig = { ...sortConfig };
@@ -129,15 +131,24 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption }) => {
 
   const renderRows = () => {
     if (tableRows && tableRows.length > 0) {
-      return (
-        tableRows.map((row, rowIndex) => (
-          <Tr key={rowIndex}>
-            {renderRowCell(row)}
-          </Tr>
-        ))
-      )
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = startIndex + pageSize;
+      const paginatedRows = tableRows.slice(startIndex, endIndex);
+
+      return paginatedRows.map((row, rowIndex) => (
+        <Tr key={rowIndex}>
+          {renderRowCell(row)}
+        </Tr>
+      ));
     }
     return null;
+  };
+
+  const pageCount = Math.ceil(tableRows.length / pageSize);
+  const pageNumbers = Array.from({ length: pageCount }, (_, index) => index + 1);
+
+  const changePage = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -153,6 +164,21 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption }) => {
           {renderRows()}
         </Tbody>
       </Table>
+      {pagination && (
+        <Flex justifyContent="center" mt={4} marginBottom={4}>
+          {pageNumbers.map((pageNumber) => (
+            <Button
+              key={pageNumber}
+              colorScheme={pageNumber === currentPage ? "cyan" : undefined}
+              size="sm"
+              onClick={() => changePage(pageNumber)}
+              mr={2}
+            >
+              {pageNumber}
+            </Button>
+          ))}
+        </Flex>
+      )}
     </TableContainer>
   );
 };
