@@ -63,7 +63,7 @@ export default function BookingTablePage() {
   return (
     <Container flexDirection="column" maxWidth="fit-content" padding="10px 10px 0px 10px" height="100vh">
       <Heading>Bookings</Heading>
-      <DataTable headers={headers} rows={rows} caption="Latest Bookings" sortable pagination />
+      <DataTable headers={headers} rows={rows} caption="Latest Bookings" sortable={true} pagination />
     </Container>
   );
 };

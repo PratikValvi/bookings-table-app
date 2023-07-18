@@ -12,7 +12,7 @@ type DataTableProps = {
   pagination?: boolean;
 };
 
-const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption, pagination }) => {
+const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption, sortable, pagination }) => {
   const [tableRows, setTableRows] = useState<(string | JSX.Element)[][]>(rows);
   const [sortConfig, setSortConfig] = useState<{ key: number | null; direction: string | null }>({
     key: null,
@@ -52,7 +52,7 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption, paginatio
   const renderHeaders = () => {
     if (headers && headers.length > 0) {
       return headers.map((header, index) => {
-        if (header === 'Select') {
+        if (header === 'Select' || !sortable) {
           return (
             <Th key={index} className="table-header">
               {header}
