@@ -1,6 +1,6 @@
 "use client"
 
-import { TableContainer, Table, TableCaption, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
+import { TableContainer, Table, TableCaption, Thead, Tbody, Tr, Th, Td, Badge, Button } from '@chakra-ui/react';
 
 type DataTableProps = {
   headers: string[];
@@ -25,14 +25,50 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption }) => {
     return null;
   };
 
+  const getBadge = (cell: string | JSX.Element) => {
+    let colorSchemeProp = "green";
+    if (cell == "Waiting") {
+      colorSchemeProp = "yellow";
+    } else if (cell == "Failed") {
+      colorSchemeProp = "red";
+    }
+
+    return (
+      <Badge variant="subtle" colorScheme={colorSchemeProp} rounded="lg" size="sm">
+        {cell}
+      </Badge>
+    )
+  }
+
+  const renderRowCell = (row: (string | JSX.Element)[]) => {
+    if (row && rows.length) {
+      return (row.map((cell, cellIndex) => {
+        if (cellIndex == 5) {
+          return (
+            <Td key={cellIndex}>
+              {getBadge(cell)}
+            </Td>
+          )
+        } else if (cellIndex == 6) {
+          return (
+            <Td key={cellIndex}><Button colorScheme="cyan" size="sm">Select</Button></Td>
+          )
+        } else {
+          return (
+            <Td key={cellIndex}>{cell}</Td>
+          )
+        }
+      }))
+    }
+    return null;
+  }
+
   const renderRows = () => {
     if (rows && rows.length > 0) {
       return (
         rows.map((row, rowIndex) => (
           <Tr key={rowIndex}>
-            {row.map((cell, cellIndex) => (
-              <Td key={cellIndex}>{cell}</Td>
-            ))}
+            {renderRowCell(row)}
           </Tr>
         ))
       )
