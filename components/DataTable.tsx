@@ -133,7 +133,7 @@ const DataTable: React.FC<DataTableProps> = ({ headers, rows, caption, sortable,
     if (tableRows && tableRows.length > 0) {
       const startIndex = (currentPage - 1) * pageSize;
       const endIndex = startIndex + pageSize;
-      const paginatedRows = tableRows.slice(startIndex, endIndex);
+      const paginatedRows = pagination ? tableRows.slice(startIndex, endIndex) : tableRows;
 
       return paginatedRows.map((row, rowIndex) => (
         <Tr key={rowIndex}>
