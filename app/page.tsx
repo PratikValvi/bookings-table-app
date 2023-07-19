@@ -10,7 +10,7 @@ export default function Home() {
       <Container maxWidth="container.xl" padding="0px 10px 0px 10px" flexDirection="column" justifyContent="center" alignItems="center">
         <Box
           position="relative"
-          bgImage="/cover.jpg"
+          bgImage="/Cover.jpg"
           bgPosition="center"
           bgRepeat="no-repeat"
           bgSize="cover"
