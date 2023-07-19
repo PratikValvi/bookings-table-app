@@ -10,13 +10,15 @@ export default function Home() {
       <Container maxWidth="container.xl" padding="0px 10px 0px 10px" flexDirection="column" justifyContent="center" alignItems="center">
         <Box
           position="relative"
-          bgImage="/Cover.jpg"
+          // bgImage="linear-gradient(to bottom, #ffeaa7, #74b9ff)"
+          // bgColor="#74b9ff"
           bgPosition="center"
           bgRepeat="no-repeat"
           bgSize="cover"
           height="100vh"
           justifyContent="center"
           alignItems="center"
+          className="home-box"
         >
           <Stack direction="column" spacing={6} alignItems="center" padding="10px 0px 0px 0px">
             <Animate
