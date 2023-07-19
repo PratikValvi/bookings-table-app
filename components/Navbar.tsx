@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
     <Box as="nav" className={"sticky-navbar"} p={2} shadow='md' color="white">
       <Stack direction="row" alignItems="center" justifyContent="center" >
         <Link href='/'>
-          <BrandLogo alt="Brand Logo" width={80} height={40} />
+          <BrandLogo />
         </Link>
         <Spacer maxWidth="2xl" />
         <HStack>
