@@ -15,8 +15,3 @@ body {
 .table-header:hover svg {
   opacity: 1;
 }
-
-/** Home */
-.home-box {
-  background-image: url('/Cover.jpg');
-}
